@@ -11,6 +11,10 @@ MOUNTS=(
 )
 
 cmd_mount() {
+    for entry in "${MOUNTS[@]}"; do
+        mkdir -p "$BASE/${entry%%:*}"
+    done
+
     # Ensure master connection is up
     if ! ssh -O check fnal &>/dev/null; then
         echo "Starting SSH master connection to fnal..."
