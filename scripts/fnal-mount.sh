@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BASE=/home/lnestor/projects/displaced_leptons/mnt
+BASE="$(cd "$(dirname "$0")/.." && pwd)/mnt"
 NOBACKUP=/uscms_data/d3/lnestor
 
 MOUNTS=(
