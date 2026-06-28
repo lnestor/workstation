@@ -4,10 +4,10 @@ BASE="$(cd "$(dirname "$0")/.." && pwd)/mnt"
 NOBACKUP=/uscms_data/d3/lnestor
 
 MOUNTS=(
-    "fnal-cmssw15-src:$NOBACKUP/DisplacedLeptons_CMSSW/CMSSW_15_0_10/src"
-    "fnal-cmssw10-src:$NOBACKUP/DisplacedLeptons_CMSSW/testint/CMSSW_10_2_22/src"
-    "fnal-nobackup-displaced-leptons:/uscms/homes/l/lnestor/nobackup/displaced_leptons"
+    "fnal-displaced-leptons:$NOBACKUP/displaced_leptons"
     "fnal-DisplacedSUSY:$NOBACKUP/DisplacedLeptons_CMSSW/Work/CMSSW_10_2_22/src"
+    "fnal-nano-cmssw-15:$NOBACKUP/nano/CMSSW_15_0_10/src"
+    "fnal-nano-cmssw-13:$NOBACKUP/nano/CMSSW_13_0_13/src"
 )
 
 cmd_mount() {
