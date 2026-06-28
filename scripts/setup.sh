@@ -12,7 +12,7 @@ clone_if_missing() {
 }
 
 clone_if_missing git@github.com:lnestor/displaced_leptons.git displaced_leptons
-clone_if_missing git@github.com:lnestor/DisplacedLeptonsSupplement.git DisplacedLeptonsSupplement
+clone_if_missing git@github.com:OSU-CMS/OSUNano.git OSUNano
 
 mkdir -p ref
 

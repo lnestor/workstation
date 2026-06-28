@@ -70,6 +70,8 @@ While most code is run remotely, there are many local copies to make reading and
 | `ref/HiggsAnalysis-CombinedLimit/` | CMS combine tool — reference only |
 | `ref/exo-datacards/` | EXO group datacards — reference only |
 
+If any of these local clones don't exist and are needed, tell the user to clone it.
+
 ---
 
 ## Style Guidelines
