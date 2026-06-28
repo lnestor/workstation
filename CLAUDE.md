@@ -6,9 +6,9 @@ This directory is the local home base for the displaced leptons CMS analysis. Wo
 
 ## Remote Servers
 
-### FNAL LPC (`fnal`)
-- **Host**: `cmslpc-el9.fnal.gov` (alias `fnal`; `fnal-el8` for EL8 node)
-- **Auth**: Kerberos — run `kinit lnestor@FNAL.GOV` before connecting; ControlMaster persists 10 min after first connection
+### FNAL LPC (`fnal-claude`)
+- **Host**: `cmslpc-el9.fnal.gov` (use alias `fnal-claude` for all SSH commands; `fnal` is the user's own session; `fnal-el8` for EL8 node)
+- **Auth**: Kerberos — requires a valid `kinit lnestor@FNAL.GOV` ticket; ControlMaster auto-opens on first use and persists 10 min
 - **Use**: Running CMSSW code (OSUNano), running PocketCoffea Condor jobs
 
 ---
@@ -23,10 +23,10 @@ scripts/fnal-mount.sh {mount|umount|status}
 
 | Mount point | Remote path | Purpose |
 |---|---|---|
-| `mnt/fnal-displaced-leptons/` | `/uscms/homes/l/lnestor/nobackup/displaced_leptons` | Running run 3 PocketCoffea-based analysis code |
+| `mnt/fnal-displaced-leptons/` | `/uscms_data/d3/lnestor/displaced_leptons` | Running run 3 PocketCoffea-based analysis code |
 | `mnt/fnal-DisplacedSUSY/` | `/uscms_data/d3/lnestor/DisplacedLeptons_CMSSW/Work/CMSSW_10_2_22/src` | Running run 2 CMSSW-based analysis code for comparison |
-| `mnt/fnal-nano-cmssw15/` | `/uscms_data/d3/lnestor/nano/CMSSW_15_0_10/src` | 2024 custom NanoAOD generation |
-| `mnt/fnal-nano-cmssw13/` | `/uscms_data/d3/lnestor/nano/CMSSW_13_0_13/src` | 2022-2023 custom NanoAOD generation |
+| `mnt/fnal-nano-cmssw-15/` | `/uscms_data/d3/lnestor/nano/CMSSW_15_0_10/src` | 2024 custom NanoAOD generation |
+| `mnt/fnal-nano-cmssw-13/` | `/uscms_data/d3/lnestor/nano/CMSSW_13_0_13/src` | 2022-2023 custom NanoAOD generation |
 
 **Always use the mount for file reading and editing** — use normal Read/Edit tools on the relevant mount point above. If the mount is not up, ask the user to run `scripts/fnal-mount.sh mount`.
 
@@ -35,13 +35,13 @@ SSHFS is slow for broad searches. If you ever need to find a file, locate it thr
 For anything requiring the CMSSW environment (compilation, cmsRun, etc.), you need to run cmsenv in the specific CMSSW environment. For example, if CMSSW_15_0_10 is needed:
 
 ```bash
-ssh fnal "cd /uscms_data/d3/lnestor/nano/CMSSW_15_0_10 && cmsenv && <command>"
+ssh fnal-claude "cd /uscms_data/d3/lnestor/nano/CMSSW_15_0_10 && cmsenv && <command>"
 ```
 
 If a grid certificate is needed, you must set the environment variable directly. It is not set in non-interactive ssh sessions. The path to the certificate is `/uscms/home/lnestor/x509up_u16918`.
 
 ```bash
-ssh fnal "X509_USER_PROXY=/uscms/home/lnestor/x509up_u16918 <command>"
+ssh fnal-claude "X509_USER_PROXY=/uscms/home/lnestor/x509up_u16918 <command>"
 ```
 
 ---

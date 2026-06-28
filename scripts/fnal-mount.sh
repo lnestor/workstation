@@ -16,9 +16,9 @@ cmd_mount() {
     done
 
     # Ensure master connection is up
-    if ! ssh -O check fnal &>/dev/null; then
-        echo "Starting SSH master connection to fnal..."
-        ssh -N -f fnal
+    if ! ssh -O check fnal-claude &>/dev/null; then
+        echo "Starting SSH master connection to fnal-claude..."
+        ssh -N -f fnal-claude
     fi
 
     for entry in "${MOUNTS[@]}"; do
@@ -30,7 +30,7 @@ cmd_mount() {
             echo "Already mounted: $name"
         else
             echo "Mounting $name..."
-            sshfs fnal:"$remote" "$mountpoint" \
+            sshfs fnal-claude:"$remote" "$mountpoint" \
                 -o reconnect \
                 -o ServerAliveInterval=15 \
                 -o ServerAliveCountMax=3 \
@@ -67,7 +67,7 @@ cmd_status() {
     done
 
     echo ""
-    ssh -O check fnal 2>&1 && echo "SSH master: active" || echo "SSH master: inactive"
+    ssh -O check fnal-claude 2>&1 && echo "SSH master: active" || echo "SSH master: inactive"
 }
 
 case "${1:-}" in
