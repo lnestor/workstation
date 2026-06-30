@@ -27,10 +27,11 @@ scripts/fnal-mount.sh {mount|umount|status}
 | `mnt/fnal-DisplacedSUSY/` | `/uscms_data/d3/lnestor/DisplacedLeptons_CMSSW/Work/CMSSW_10_2_22/src` | Running run 2 CMSSW-based analysis code for comparison |
 | `mnt/fnal-nano-cmssw-15/` | `/uscms_data/d3/lnestor/nano/CMSSW_15_0_10/src` | 2024 custom NanoAOD generation |
 | `mnt/fnal-nano-cmssw-13/` | `/uscms_data/d3/lnestor/nano/CMSSW_13_0_13/src` | 2022-2023 custom NanoAOD generation |
+| `mnt/fnal-supplement/` | `/uscms_data/d3/lnestor/CMSSW_15_0_10/src` | Signal MC generation |
 
 **Always use the mount for file reading and editing** — use normal Read/Edit tools on the relevant mount point above. If the mount is not up, ask the user to run `scripts/fnal-mount.sh mount`.
 
-SSHFS is slow for broad searches. If you ever need to find a file, locate it through SSH first.
+SSHFS is slow for broad searches. If you ever need to find a file, locate it through SSH first. When running the `find` command on a CMSSW environment, run it from the `src/` subdirectory.
 
 For anything requiring the CMSSW environment (compilation, cmsRun, etc.), you need to run cmsenv in the specific CMSSW environment. For example, if CMSSW_15_0_10 is needed:
 
