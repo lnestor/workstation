@@ -75,6 +75,12 @@ If any of these local clones don't exist and are needed, tell the user to clone 
 
 ---
 
+## EOS Paths
+
+On the LPC, my personal EOS space is at `/store/user/lnestor`. An important subdirectory is `/store/user/lnestor/supplements`, which holds supplement files for the displaced leptons analysis. When reading from EOS, always use the `eos <redirector> <cmd>` pattern, not using `ls` directly. For example, use `eos root://cmseos.fnal.gov/ ls` to view a directory.
+
+---
+
 ## Style Guidelines
 
 Always use ASCII characters only when writing code. Do not use em-dashes. Use hyphens instead. Do not use Greek letters, write them out instead (i.e. mu). Do not write excessive comments.
