@@ -6,8 +6,8 @@ NOBACKUP=/uscms_data/d3/lnestor
 MOUNTS=(
     "fnal-displaced-leptons:$NOBACKUP/displaced_leptons"
     "fnal-DisplacedSUSY:$NOBACKUP/DisplacedLeptons_CMSSW/Work/CMSSW_10_2_22/src"
-    "fnal-nano-cmssw-15:$NOBACKUP/nano/CMSSW_15_0_10/src"
-    "fnal-nano-cmssw-13:$NOBACKUP/nano/CMSSW_13_0_13/src"
+    "fnal-supplement-cmssw-15:$NOBACKUP/CMSSW_15_0_10/src"
+    "fnal-supplement-cmssw-14:$NOBACKUP/CMSSW_14_0_21/src"
 )
 
 cmd_mount() {
