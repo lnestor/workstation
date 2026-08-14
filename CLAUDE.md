@@ -1,6 +1,6 @@
 # Displaced Leptons Analysis — Local Setup
 
-This directory is the local home base for the displaced leptons CMS analysis. Work is done primarily on the FNAL LPC.
+This directory is the local home base for the displaced leptons CMS analysis. Work is done primarily on the FNAL LPC. Most edits should be done there. Often times the codebase on the LPC is up to date, while the local copy is behind. Assume the user means on the LPC unless specified.
 
 ---
 
@@ -25,9 +25,8 @@ scripts/fnal-mount.sh {mount|umount|status}
 |---|---|---|
 | `mnt/fnal-displaced-leptons/` | `/uscms_data/d3/lnestor/displaced_leptons` | Running run 3 PocketCoffea-based analysis code |
 | `mnt/fnal-DisplacedSUSY/` | `/uscms_data/d3/lnestor/DisplacedLeptons_CMSSW/Work/CMSSW_10_2_22/src` | Running run 2 CMSSW-based analysis code for comparison |
-| `mnt/fnal-nano-cmssw-15/` | `/uscms_data/d3/lnestor/nano/CMSSW_15_0_10/src` | 2024 custom NanoAOD generation |
-| `mnt/fnal-nano-cmssw-13/` | `/uscms_data/d3/lnestor/nano/CMSSW_13_0_13/src` | 2022-2023 custom NanoAOD generation |
-| `mnt/fnal-supplement/` | `/uscms_data/d3/lnestor/CMSSW_15_0_10/src` | Signal MC generation |
+| `mnt/fnal-supplement-cmssw-15/` | `/uscms_data/d3/lnestor/CMSSW_15_0_10/src` | Supplement file generation, Signal MC generation steps 3 and 4 |
+| `mnt/fnal-supplement-cmssw-14/` | `/uscms_data/d3/lnestor/CMSSW_14_0_21/src` | Signal MC generation steps 1 and 2 |
 
 **Always use the mount for file reading and editing** — use normal Read/Edit tools on the relevant mount point above. If the mount is not up, ask the user to run `scripts/fnal-mount.sh mount`.
 
@@ -56,7 +55,7 @@ While most code is run remotely, there are many local copies to make reading and
 | Directory | Purpose |
 |---|---|
 | `displaced_leptons/` | Main analysis config/scripts for this Run 3 analysis |
-| `OSUNano/` | Local copy of the CMSSW custom NanoAOD generation code. Used for this analysis and another (Disappearing Tracks) |
+| `DisplacedLeptonsSupplement/` | CMSSW package for producing supplement files |
 
 **Reference (`ref/`):**
 
@@ -70,6 +69,7 @@ While most code is run remotely, there are many local copies to make reading and
 | `ref/DisappTrks/` | Disappearing tracks analysis sharing OSUNano — read when changes to OSUNano may affect it |
 | `ref/HiggsAnalysis-CombinedLimit/` | CMS combine tool — reference only |
 | `ref/exo-datacards/` | EXO group datacards — reference only |
+| `ref/OSUNano/` | Used for custom NanoAOD generation. Not used anymore, only here for reference. |
 
 If any of these local clones don't exist and are needed, tell the user to clone it.
 
@@ -77,7 +77,7 @@ If any of these local clones don't exist and are needed, tell the user to clone 
 
 ## Style Guidelines
 
-Always use ASCII characters only when writing code. Do not use em-dashes. Use hyphens instead. Do not use Greek letters, write them out instead (i.e. mu).
+Always use ASCII characters only when writing code. Do not use em-dashes. Use hyphens instead. Do not use Greek letters, write them out instead (i.e. mu). Do not write excessive comments.
 
 ---
 
