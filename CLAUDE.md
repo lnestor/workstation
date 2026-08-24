@@ -2,6 +2,8 @@
 
 This directory is the local home base for the displaced leptons CMS analysis. Work is done primarily on the FNAL LPC. Most edits should be done there. Often times the codebase on the LPC is up to date, while the local copy is behind. Assume the user means on the LPC unless specified.
 
+**NEVER edit files in the local clones (below) unless the user explicitly tells you to.** Edits belong on the LPC, via the FNAL Mount (see below). If you are unsure which copy the user means, ask -- do not default to editing locally. Before treating any local clone's content as the current state of the code (e.g. to run a test, explain behavior, or replicate logic), check it against the LPC copy -- the local clone can silently hold stale or uncommitted changes that were never deployed.
+
 ---
 
 ## Remote Servers

@@ -1,6 +1,41 @@
 #!/usr/bin/env bash
 set -e
 
+check_ssh_config() {
+    local ssh_config="$HOME/.ssh/config"
+    if grep -qE '^Host( +[^ ]+)* +fnal( +|$)' "$ssh_config" 2>/dev/null \
+        && grep -qE '^Host( +[^ ]+)* +fnal-claude( +|$)' "$ssh_config" 2>/dev/null; then
+        return
+    fi
+
+    cat <<'EOF'
+
+No 'fnal' / 'fnal-claude' SSH aliases found in ~/.ssh/config.
+Run the following to add them (adjust the User if needed):
+
+cat <<'SSHEOF' >> ~/.ssh/config
+
+Host fnal
+    Hostname cmslpc-el9.fnal.gov
+    User lnestor
+
+Host fnal-claude
+    Hostname cmslpc-el9.fnal.gov
+    User lnestor
+    ControlMaster auto
+    ControlPath ~/.ssh/cm-claude-%r@%h:%p
+    ControlPersist 10m
+
+Host cmslpc*.fnal.gov fnal fnal-claude
+    GSSAPIAuthentication yes
+    GSSAPIDelegateCredentials yes
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+SSHEOF
+
+EOF
+}
+
 clone_if_missing() {
     local url="$1"
     local dir="$2"
@@ -31,3 +66,5 @@ else
     git checkout
     cd ../..
 fi
+
+check_ssh_config
