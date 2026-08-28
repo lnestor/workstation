@@ -29,16 +29,8 @@ many `output_{sample}.coffea` files (one per sample) that need to be merged into
    failures (e.g. an `error/` directory, `failed_jobs.json`, etc.). If you see any such
    indication, stop and tell the user what you found and ask what to do -- don't start
    investigating it yourself. These could be stale files left over from a previous run.
-5. Check whether `output_all.coffea` already exists in the channel directory. If it
-   does, ask the user whether to use the existing file or overwrite it -- don't just
-   overwrite it. If overwriting, delete the existing `output_all.coffea` first, since
-   otherwise the `output*` wildcard below would pick it up as an input.
-6. For each confirmed channel directory, merge its `output_*.coffea` files with
-   `scripts/merge_coffea.py`. The merged file must always be named `output_all.coffea`:
-
-   ```bash
-   python3 scripts/merge_coffea.py output/{channel}_d0_smearing_v<N>/output* -o output/{channel}_d0_smearing_v<N>/output_all.coffea
-   ```
+5. For each confirmed channel directory, merge its `output_*.coffea` files into
+   `output_all.coffea` using the [[merge-coffea]] skill.
 
 ## 2. Run the fit
 
