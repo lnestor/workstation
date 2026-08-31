@@ -64,6 +64,20 @@ certificate proxy set explicitly (see CLAUDE.md's "FNAL Mount" section):
 ssh fnal-claude "X509_USER_PROXY=/uscms/home/lnestor/x509up_u16918 xrdcp ..."
 ```
 
+### Deleting and moving/renaming
+
+```bash
+# delete a file or directory (recursively)
+eos root://cmseos.fnal.gov/ rm -r /store/user/lnestor/<path>
+
+# move/rename a file or directory within EOS
+eos root://cmseos.fnal.gov/ mv /store/user/lnestor/<src> /store/user/lnestor/<dst>
+```
+
+These are destructive/hard-to-reverse -- confirm the exact path list with the user before
+running `rm -r`, and check the destination doesn't already hold something unrelated before
+`mv`.
+
 ### Reading EOS files from code (ROOT / uproot / coffea / PocketCoffea)
 
 Pass the full redirector URL as the file path -- these libraries open xrootd URLs
